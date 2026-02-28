@@ -1,11 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar {
+export class Navbar implements OnInit {
+  cycles: { value: string; label: string }[] = [];
+  selectedCycle = '';
+  subhead = '';
 
+  ngOnInit() {
+    this.buildCycleSelect();
+  }
+
+
+  buildCycleSelect() {
+    // Stub data — replace with real expense cycles later
+    this.cycles = [
+      { value: '2026-01-01', label: 'January 2026' },
+      { value: '2025-12-01', label: 'December 2025' },
+      { value: '2025-11-01', label: 'November 2025' },
+    ];
+
+    this.selectedCycle = this.cycles[0].value;
+    this.subhead = this.cycles[0].label;
+  }
+
+  onCycleChange(value: string) {
+    this.subhead = this.cycles.find(c => c.value === value)?.label ?? '';
+  }
 }
