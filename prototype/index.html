@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header>
+      <div>
+        <div class="logo">Expense<span>.</span></div>
+        <div class="subhead" id="subhead"></div>
+      </div>
+      <div class="header-right">
+        <select id="cycleSelect"></select>
+        <button class="btn btn-ghost" onclick="exportData()" title="Export all data to a JSON file">↓ Export</button>
+        <label class="btn btn-ghost" title="Import data from a JSON backup file" style="cursor:pointer">
+          ↑ Import
+          <input type="file" id="importFile" accept=".json" onchange="importData(event)" style="display:none" />
+        </label>
+        <button class="btn btn-primary" onclick="openModal()">+ Add Expense</button>
+      </div>
+    </header>
+
+    <nav>
+      <button class="nav-btn active" id="tab-dashboard" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="nav-btn" id="tab-budgets" onclick="switchTab('budgets')">Budgets</button>
+      <button class="nav-btn" id="tab-settings" onclick="switchTab('settings')">Settings</button>
+    </nav>
+
+    <div id="view-dashboard"></div>
+    <div id="view-budgets"  style="display:none"></div>
+    <div id="view-settings" style="display:none"></div>
+  </div>
+
+  <!-- Add Expense Modal -->
+  <div class="overlay" id="modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <div class="modal-title">Add Expense</div>
+      <div class="form-col">
+        <input type="text" id="f-desc" placeholder="Description" />
+        <div class="form-row">
+          <input type="number" id="f-amount" placeholder="Amount (R)" min="0" step="0.01" />
+          <input type="date" id="f-date" />
+        </div>
+        <select id="f-cat" class="form-select"></select>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="addExpense()">Add</button>
+          <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
