@@ -11,6 +11,8 @@ export class Navbar implements OnInit {
   cycles: { value: string; label: string }[] = [];
   selectedCycle = '';
   subhead = '';
+  activeTab = 'Dashboard';
+
 
   ngOnInit() {
     this.buildCycleSelect();
@@ -31,5 +33,14 @@ export class Navbar implements OnInit {
 
   onCycleChange(value: string) {
     this.subhead = this.cycles.find(c => c.value === value)?.label ?? '';
+  }
+
+  switchTab(tab: string) {
+    console.log('Switching to tab:', tab);
+    this.activeTab = tab;
+  }
+
+  isActiveTab(tab: string) {
+    return this.activeTab === tab;
   }
 }

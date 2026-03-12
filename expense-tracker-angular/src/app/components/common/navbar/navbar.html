@@ -4,9 +4,9 @@
         <h1 class="title">Expense Tracker</h1>
 
         <nav>
-            <button class="nav-btn active" id="tab-dashboard" onclick="switchTab('dashboard')">Dashboard</button>
-            <button class="nav-btn" id="tab-budgets" onclick="switchTab('budgets')">Budgets</button>
-            <button class="nav-btn" id="tab-settings" onclick="switchTab('settings')">Settings</button>
+            <button class="nav-btn" id="tab-dashboard" [class.active]="isActiveTab('Dashboard')" (click)="switchTab('Dashboard')">Dashboard</button>
+            <button class="nav-btn" id="tab-budgets" [class.active]="isActiveTab('Budgets')" (click)="switchTab('Budgets')">Budgets</button>
+            <button class="nav-btn" id="tab-settings" [class.active]="isActiveTab('Settings')" (click)="switchTab('Settings')">Settings</button>
         </nav>
     </div>
     
@@ -19,8 +19,8 @@
         }
         </select>
 
-        <button class="btn btn-ghost" title="Export all data to a PDF file">Export</button>
-        <button class="btn btn-primary">Add Expense</button>
+        <button class="btn-action" title="Export all data to a PDF file">Export</button>
+        <button class="btn-action">Add Expense</button>
 
     </section>
 

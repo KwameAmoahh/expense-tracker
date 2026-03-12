@@ -4,9 +4,16 @@
     align-items: flex-start;
 }
 
+nav { 
+    display: flex; 
+    gap: 4px; 
+    margin-bottom: 24px; 
+}
+
 .navbar-left {
     display: flex;
     flex-direction: column;
+    color: white
 }
 
 .title { 
@@ -34,56 +41,42 @@
 
 /* ────────────────── Buttons ──────────────────── */
 button { 
-    font-family: 'DM Sans', sans-serif; 
     cursor: pointer; 
-    border: none; 
+    border: 1px solid transparent; /* reserve space, override per class */
     transition: all .15s; 
 }
-.btn { 
-    border-radius: 8px; 
-    padding: 9px 18px; 
-    font-size: 14px; 
-    font-weight: 500; 
-}
-.btn-primary { 
-    background: var(--accent); 
-    color: #0f1117; 
-}
-.btn-primary:hover { 
-    background: var(--accent-hover); 
-    transform: translateY(-1px); 
-}
-.btn-ghost { 
-    background: transparent; 
-    color: #999; 
-    border: 1px solid var(--border2); 
-}
-.btn-ghost:hover { 
-    border-color: #555; 
-    color: var(--text); 
+
+.nav-btn {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
+.nav-btn.active {
+    color: var(--text);
+    border-color: var(--border2);
+}
 
-/* ────────────────── Nav ────────────────── */
-nav { 
-    display: flex; 
-    gap: 4px; 
-    margin-bottom: 24px; 
+.nav-btn:hover:not(.active) {
+    color: var(--text);
 }
-.nav-btn { 
-    background: none; 
-    border: none; 
-    color: var(--muted); 
-    font-family: 'DM Sans', sans-serif; 
-    font-size: 14px; 
-    font-weight: 500; 
-    padding: 8px 16px; 
-    border-radius: 8px; 
+
+.btn-action {
+    background: transparent;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border-color: var(--border2);
 }
-.nav-btn.active { 
-    color: var(--text); 
-    background: var(--border); 
+
+.btn-action:hover {
+    color: var(--text-muted);
+    border-color: var(--border);
+    background: transparent;
 }
-.nav-btn:hover:not(.active) { 
-    color: var(--text); 
-}
+
