@@ -1,5 +1,8 @@
-<app-navbar></app-navbar>
+<app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
 
-@if(section == "dashboard"){
-    <app-total-spent-card></app-total-spent-card>
+@if(tab == "Dashboard"){
+    <section class="first-row">
+        <app-total-spent-card></app-total-spent-card>
+    </section>
+    
 }

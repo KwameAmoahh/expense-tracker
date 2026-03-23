@@ -14,5 +14,9 @@ import { TotalSpentCard } from './components/dashboard/total-spent-card/total-sp
 })
 export class App {
   protected title = 'expense-tracker-angular';
-  section: string = 'dashboard';
+  tab: string = 'Dashboard';
+
+  onSwitchedTab(tab: string) {
+    this.tab = tab;
+  }
 }

@@ -80,3 +80,34 @@ button {
     background: transparent;
 }
 
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .navbar-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .wrapper {
+        justify-content: center;
+        padding-top: 8px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .cycleSelect {
+        width: 100%;
+    }
+}
+
