@@ -1,31 +1,29 @@
 .container {
-    color: #5d6375;
-    background: #171a21;
-    border: 1px solid #24293b;
+    color: var(--text-card);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     box-sizing: border-box;
-    border-radius: 15px;
-    width: 70%;
-    max-width: 300px;
+    border-radius: var(--radius);
+    width: 300px;
     padding: 0.8rem;
     min-height: 100px;
-    min-width: 180px;
 }
 .container h6 {
-    color: #5d6375;
+    color: var(--text-card);
     font-family: Arial;
     margin: 0;
     padding: 1rem;
     line-height: 1.2;
 }
 .container h2 {
-    color: #F4A87C;
+    color: var(--accent);
     font-family: Arial;
     margin: 0;
     padding-left: 1rem;
     line-height: 1.2;
 }
 .container h5 {
-    color: #5d6375;
+    color: var(--text-card);
     font-family: Arial;
     margin: 0;
     padding-left: 1rem;
