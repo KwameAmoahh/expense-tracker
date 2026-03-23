@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --text: #ffffff;
-    --text-muted: #999999;  
-    --border: #555555;
-    --border2: #333333;
+  --text: #ffffff;
+  --text-muted: #999999;  
+  --border: #555555;
+  --border2: #333333;
+
+  --bg-card: #171a21;
+  --border-card: #24293b;
+  --radius: 15px;
+  --text-card: #5d6375;
+  --accent: #F4A87C;
 }
 
 body {
