@@ -1,0 +1,27 @@
+<section class="navbar">
+
+    <div class = "navbar-left">
+        <h1 class="title">Expense Tracker</h1>
+
+        <nav>
+            <button class="nav-btn" id="tab-dashboard" [class.active]="isActiveTab('Dashboard')" (click)="switchTab('Dashboard')">Dashboard</button>
+            <button class="nav-btn" id="tab-budgets" [class.active]="isActiveTab('Budgets')" (click)="switchTab('Budgets')">Budgets</button>
+            <button class="nav-btn" id="tab-settings" [class.active]="isActiveTab('Settings')" (click)="switchTab('Settings')">Settings</button>
+        </nav>
+    </div>
+    
+
+    <section class="wrapper">
+
+        <select class="cycleSelect" [(ngModel)]="selectedCycle" (ngModelChange)="onCycleChange($event)">
+        @for (cycle of cycles; track cycle.value) {
+            <option [value]="cycle.value">{{ cycle.label }}</option>
+        }
+        </select>
+
+        <button class="btn-action" title="Export all data to a PDF file">Export</button>
+        <button class="btn-action">Add Expense</button>
+
+    </section>
+
+</section>

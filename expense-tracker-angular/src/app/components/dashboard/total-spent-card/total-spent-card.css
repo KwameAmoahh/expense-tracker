@@ -1,0 +1,35 @@
+.container {
+    color: #5d6375;
+    background: #171a21;
+    border: 1px solid #24293b;
+    box-sizing: border-box;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 300px;
+    padding: 0.8rem;
+    min-height: 100px;
+    min-width: 180px;
+}
+.container h6 {
+    color: #5d6375;
+    font-family: Arial;
+    margin: 0;
+    padding: 1rem;
+    line-height: 1.2;
+}
+.container h2 {
+    color: #F4A87C;
+    font-family: Arial;
+    margin: 0;
+    padding-left: 1rem;
+    line-height: 1.2;
+}
+.container h5 {
+    color: #5d6375;
+    font-family: Arial;
+    margin: 0;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    line-height: 1.2;
+}
