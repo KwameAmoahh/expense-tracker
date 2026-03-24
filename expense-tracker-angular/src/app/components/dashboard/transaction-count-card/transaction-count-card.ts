@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-count-card',
-  imports: [CurrencyPipe],
+  imports: [],
   templateUrl: './transaction-count-card.html',
   styleUrl: './transaction-count-card.css',
 })

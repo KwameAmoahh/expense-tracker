@@ -1,10 +1,16 @@
-<app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
+<app-login-dialog *ngIf="!isLoggedIn"></app-login-dialog>
 
-@if(tab == "Dashboard"){
-    <section class="first-row">
-        <app-total-spent-card></app-total-spent-card>
-        <app-remaining-amount-card></app-remaining-amount-card>
-        <app-transaction-count-card></app-transaction-count-card>
-    </section>
-    
+@if(isLoggedIn) {
+
+    <app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
+
+    @if(tab == "Dashboard"){
+        <section class="first-row">
+            <app-total-spent-card></app-total-spent-card>
+            <app-remaining-amount-card></app-remaining-amount-card>
+            <app-transaction-count-card></app-transaction-count-card>
+        </section>
+        
+    }
+
 }
