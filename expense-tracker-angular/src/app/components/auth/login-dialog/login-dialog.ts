@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { SignUpDialog } from '../sign-up-dialog/sign-up-dialog';
 import { LoginDialogData } from '../../../models/User.model';
-
+import { AuthService } from '../../../services/auth.service';
 
 
 
@@ -30,7 +30,8 @@ export class LoginDialog implements OnInit {
   constructor(private fb: FormBuilder,
               private dialog: MatDialog,
               private dialogRef: MatDialogRef<LoginDialog>,
-              @Inject(MAT_DIALOG_DATA) public data: LoginDialogData
+              @Inject(MAT_DIALOG_DATA) public data: LoginDialogData,
+              private auth: AuthService
   ) {}  
 
   ngOnInit(): void {
@@ -48,31 +49,28 @@ export class LoginDialog implements OnInit {
     return this.loginForm.get(controlName);
   }
 
-  protected login(): void {
+  protected async login(): Promise<void> {
     if (this.loginForm.valid) {
       this.errorMessage = '';
       this.successMessage = '';
-      console.log('Login form submitted:', this.loginForm.value);
-      // this.authService.loginUser(this.loginForm.value).subscribe({ 
-      //   next: () => {
-      //   this.successMessage = 'Login successful! Redirecting...';
-      //   setTimeout(() => {
-      //       this.dialogRef.close();
-      //     }, 2000);  
-      // },
-      // error: (error) => {
-      //   console.error('Login failed:', error);
-      //   if (error.status === 401) {
-      //     this.errorMessage = 'Invalid email or password';
-      //   }
-      //   else {
-      //     this.errorMessage = 'An error occurred. Please try again.';
-      //   }
-      // }
-      // });
+
+      const { data, error } = await this.auth.signIn(
+        this.loginForm.value.emailAddress,
+        this.loginForm.value.password
+      );
+
+      if (error) {
+        this.errorMessage = 'Invalid email or password';
+        return;
+      }
+
+      this.successMessage = 'Login successful! Redirecting...';
+      setTimeout(() => {
+        this.dialogRef.close();
+      }, 2000);
     }
   }
-
+  
   protected openSignUp(): void {
     this.dialogRef.close();  // Close login dialog
     this.dialog.open(SignUpDialog);  // Open register dialog

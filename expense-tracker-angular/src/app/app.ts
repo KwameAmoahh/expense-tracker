@@ -7,7 +7,7 @@ import { TotalSpentCard } from './components/dashboard/total-spent-card/total-sp
 import { RemainingAmountCard } from './components/dashboard/remaining-amount-card/remaining-amount-card';
 import { TransactionCountCard } from './components/dashboard/transaction-count-card/transaction-count-card';
 import { LoginDialog } from './components/auth/login-dialog/login-dialog';
-
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -27,14 +27,27 @@ export class App implements OnInit {
   isLoggedIn = false;
   tab: string = 'Dashboard';
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+              private auth: AuthService
+  ) {}
 
-  ngOnInit(): void {
-    if (!this.isLoggedIn) {
-      this.dialog.open(LoginDialog, {
+  async ngOnInit(): Promise<void> {
+    const { data } = await this.auth.getSession();
+
+    if (!data.session) {
+      const dialogRef = this.dialog.open(LoginDialog, {
         disableClose: true,
         data: { emailAddress: '', password: '' }
       });
+
+      dialogRef.afterClosed().subscribe(async () => {
+        const { data } = await this.auth.getSession();
+        if (data.session) {
+          this.isLoggedIn = true;
+        }
+      });
+    } else {
+      this.isLoggedIn = true;
     }
   }
 

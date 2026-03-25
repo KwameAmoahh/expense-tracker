@@ -1,5 +1,3 @@
-<app-login-dialog *ngIf="!isLoggedIn"></app-login-dialog>
-
 @if(isLoggedIn) {
 
     <app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
@@ -10,7 +8,6 @@
             <app-remaining-amount-card></app-remaining-amount-card>
             <app-transaction-count-card></app-transaction-count-card>
         </section>
-        
     }
 
 }
