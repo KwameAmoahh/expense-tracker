@@ -1,10 +1,13 @@
-<app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
+@if(isLoggedIn) {
 
-@if(tab == "Dashboard"){
-    <section class="first-row">
-        <app-total-spent-card></app-total-spent-card>
-        <app-remaining-amount-card></app-remaining-amount-card>
-        <app-transaction-count-card></app-transaction-count-card>
-    </section>
-    
+    <app-navbar (activeTabChange)="onSwitchedTab($event)"></app-navbar>
+
+    @if(tab == "Dashboard"){
+        <section class="first-row">
+            <app-total-spent-card></app-total-spent-card>
+            <app-remaining-amount-card></app-remaining-amount-card>
+            <app-transaction-count-card></app-transaction-count-card>
+        </section>
+    }
+
 }

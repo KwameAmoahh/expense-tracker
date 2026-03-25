@@ -1,0 +1,64 @@
+
+<style>
+#erd { padding: 1rem 0; }
+#erd svg { width: 100% !important; }
+#erd text { fill: #000000 !important; }
+</style>
+<div id="erd"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: 'sans-serif',
+  themeVariables: {
+    fontSize: '14px',
+    fontFamily: 'sans-serif',
+    primaryColor: '#e8eaf6',
+    primaryTextColor: '#000000',
+    primaryBorderColor: '#9fa8da',
+    lineColor: '#555555',
+    secondaryColor: '#f0f0f0',
+    tertiaryColor: '#fafafa',
+    attributeBackgroundColorEven: '#f5f5f5',
+    attributeBackgroundColorOdd: '#eeeeee',
+  },
+});
+const { svg } = await mermaid.render('erd-svg', `erDiagram
+  User ||--o{ Cycle : "has"
+  User ||--o{ Budget : "has"
+  User ||--o{ Expense : "records"
+  Cycle ||--o{ Expense : "contains"
+
+  User {
+    uuid id PK
+    string email
+    string password
+  }
+
+  Cycle {
+    uuid id PK
+    uuid userId FK
+    datetime startDate
+    datetime endDate
+  }
+
+  Budget {
+    uuid id PK
+    uuid userId FK
+    string title
+    float amount
+  }
+
+  Expense {
+    uuid id PK
+    uuid userId FK
+    uuid cycleId FK
+    string title
+    float amount
+    datetime recordedDate
+  }
+`);
+document.getElementById('erd').innerHTML = svg;
+</script>
