@@ -72,8 +72,17 @@ export class LoginDialog implements OnInit {
   }
   
   protected openSignUp(): void {
-    this.dialogRef.close();  // Close login dialog
-    this.dialog.open(SignUpDialog);  // Open register dialog
+    this.dialogRef.close();
+    const signUpRef = this.dialog.open(SignUpDialog, { disableClose: true });
+
+    signUpRef.afterClosed().subscribe(async (result) => {
+      if (result?.loggedIn) {
+        // Already logged in, nothing to do, app will handle it
+      } else {
+        // Reopen login if they cancelled
+        this.dialog.open(LoginDialog, { disableClose: true });
+      }
+    });
   }
 
 }
